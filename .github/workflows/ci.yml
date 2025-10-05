@@ -1,4 +1,4 @@
-name: Java Selenium CI
+name: Run Selenium Tests
 
 on:
   push:

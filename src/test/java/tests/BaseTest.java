@@ -20,7 +20,7 @@ public class BaseTest {
         if (envUrl != null && !envUrl.isEmpty()) {
             url = envUrl;
         } else {
-            Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
+            Dotenv dotenv = Dotenv.load();
             url = dotenv.get("BASE_URL");
         }
     }
