@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import pages.HomePage;
 import io.github.cdimascio.dotenv.Dotenv;
+import java.time.Duration;
 
 public class BaseTest {
     protected WebDriver driver;
@@ -20,7 +21,7 @@ public class BaseTest {
         if (envUrl != null && !envUrl.isEmpty()) {
             url = envUrl;
         } else {
-            Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
+            Dotenv dotenv = Dotenv.load();
             url = dotenv.get("BASE_URL");
         }
     }
@@ -36,8 +37,12 @@ public class BaseTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--user-data-dir=/tmp/chrome_" + System.currentTimeMillis());
+        options.addArguments("--window-size=1920,1080"); // ensures layout renders
+        options.addArguments("--disable-extensions");
+        options.addArguments("--disable-infobars");
 
         driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         homePage = new HomePage(driver);
     }
 
