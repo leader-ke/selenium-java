@@ -11,7 +11,18 @@ import io.github.cdimascio.dotenv.Dotenv;
 public class BaseTest {
     protected WebDriver driver;
     protected HomePage homePage;
-    protected final String url = Dotenv.load().get("BASE_URL");
+    protected final String url;
+
+    public BaseTest() {
+        String envUrl = System.getenv("BASE_URL");
+
+        if (envUrl != null && !envUrl.isEmpty()) {
+            url = envUrl;
+        } else {
+            Dotenv dotenv = Dotenv.load();
+            url = dotenv.get("BASE_URL");
+        }
+    }
 
     @Before
     public void setUp() {
