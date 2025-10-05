@@ -21,7 +21,7 @@ public class BaseTest {
             url = envUrl;
         } else {
             Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
-            url = dotenv.get("BASE_URL");
+            url = dotenv.get("BASE_URL", "https://demoqa.com");
         }
     }
 
