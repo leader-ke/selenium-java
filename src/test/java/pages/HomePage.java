@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 public class HomePage {
     static WebDriver driver;
 
-    private final By searchButtonLocator = By.cssSelector(".FPdoLc.lJ9FBc");
+    private final By searchButtonLocator = By.cssSelector(".text-center");
 
     public HomePage(WebDriver driver) {
         HomePage.driver = driver;
