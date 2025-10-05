@@ -27,6 +27,11 @@ jobs:
       - name: Build with Maven
         run: mvn clean install
 
+      - name: Print BASE_URL for debug
+        run: echo "BASE_URL=$BASE_URL"
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+
       # 4️⃣ Run Selenium tests
       - name: Run tests
         env:
