@@ -7,6 +7,8 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    env:
+      BASE_URL: ${{ secrets.BASE_URL }}
 
     steps:
       # 1️⃣ Checkout repo
@@ -29,6 +31,4 @@ jobs:
 
       # 4️⃣ Run Selenium tests
       - name: Run tests
-        env:
-          BASE_URL: ${{ secrets.BASE_URL }}
         run: mvn test
