@@ -10,6 +10,5 @@ public class HomePageTest extends BaseTest {
     public void searchPageShown() {
         homePage.goToHomePage(url + "/text-box");
         assertTrue (homePage.searchButton().isDisplayed());
-        driver.quit();
     }
 }
